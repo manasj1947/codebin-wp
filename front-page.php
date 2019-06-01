@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+/*
+Template Name: Home
+*/
+ get_header(); ?>
 <!-- content starts -->
 <!-- SLIDER Revo Hero 1 FONT MONTSERRAT -->
 <div class="relative">
@@ -79,77 +83,33 @@
           <div class="line-3-75"></div>
         </div>
       </div>
+
+      <?php
+
+$args = array(
+    'post_type'=> 'services',
+    'order'    => 'ASC'
+    );
+
+$the_query = new WP_Query( $args );
+if($the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
+
+?>
       <div class="col-xs-12 col-sm-4 col-md-4">
         <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
           <div class="fes13-title-cont">
             <div class="fes13-box-icon">
-              <div class="icon fa fa-mobile-alt"></div>
+              <?php echo get_field('icon'); ?>
+              <!-- <div class="icon fa fa-mobile-alt"></div> -->
             </div>
-            <h3 class="font-montserrat"><strong>Mobile & web dev</strong></h3>
+            <h3 class="font-montserrat"><strong><?php echo the_title(); ?></strong></h3>
           </div>
           <div>
             Complete application development solutions for Android, iOS and web with scalable backends
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="fes4-box wow fadeIn" data-wow-delay="400ms">
-          <div class="fes13-title-cont">
-            <div class="fes13-box-icon">
-              <div class="icon fa fa-tools"></div>
-            </div>
-            <h3 class="font-montserrat"><strong>Software development</strong></h3>
-          </div>
-          <div>
-            We build customised software for small and medium businesses to serve tailored needs and make work
-            easier
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="row">
-
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="fes4-box wow fadeIn" data-wow-delay="600ms">
-          <div class="fes13-title-cont">
-            <div class="fes13-box-icon">
-              <div class="icon fa fa-running"></div>
-            </div>
-            <h3 class="font-montserrat"><strong>Progressive Web Apps</strong></h3>
-          </div>
-          <div>
-            Web based applications which behave like native applications without needing to install
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="fes4-box wow fadeIn" data-wow-delay="800ms">
-          <div class="fes13-title-cont">
-            <div class="fes13-box-icon">
-              <div class="icon fa fa-edit"></div>
-            </div>
-            <h3 class="font-montserrat"><strong>UI & Prototyping</strong></h3>
-          </div>
-          <div>
-            Creating user interfaces and user experience with Google Material design principles and functional
-            prototypes
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="fes4-box wow fadeIn" data-wow-delay="1000ms">
-          <div class="fes13-title-cont">
-            <div class="fes13-box-icon">
-              <div class="icon fab fa-react"></div>
-            </div>
-            <h3 class="font-montserrat"><strong>React Native - Android & iOS</strong></h3>
-          </div>
-          <div>
-            We build highly scalable and performant RN-Redux apps with almost 90% common code for iOS and Android
-          </div>
-        </div>
-      </div>
+<?php  endwhile;endif;wp_reset_query();?>
 
     </div>
   </div>
@@ -168,357 +128,25 @@
       </div>
     </div>
 
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-react"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>ReactJs</strong></h3>
-        </div>
-      </div>
-    </div>
 
+  <?php if( have_rows('technologies') ): ?>
+    <?php while( have_rows('technologies') ): the_row(); ?>
     <div class="col-xs-6 col-sm-3 col-md-3">
       <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
         <div class="fes13-title-cont">
           <div class="fes13-box-icon">
-            <div class="icon fab fa-react"></div>
+            <?php echo the_sub_field('icon');?>
+            <!-- <div class=""></div> -->
           </div>
-          <h3 class="font-montserrat"><strong>React Native</strong></h3>
+          <h3 class="font-montserrat"><strong><?php echo the_sub_field('text');?></strong></h3>
         </div>
       </div>
     </div>
+     <?php endwhile; ?>
+<?php endif; ?>
 
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-angular"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>AngularJs</strong></h3>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-java"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>JAVA</strong></h3>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-js"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>JavaScript ES6</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-php"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>PHP</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-terminal"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Jest</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-vuejs"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Vuejs</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>AWS</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>AWS Lambda</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>AWS S3</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>DynamoDb</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Elastic Beanstalk</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Ec2</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-aws"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Rekognition</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-docker"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Docker</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-jira"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Jira</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-github"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Github</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-js"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Express</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-database"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>MongoDb</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-database"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>MySQL</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-node-js"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>NodeJs</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-google"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Material Design</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-eye"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Semantic UI</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-eye"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Bootstrap</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-android"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Android</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-apple"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>iOS</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-globe-asia"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>PWA</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-laravel"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>Laravel</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fa fa-fire"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>CodeIgniter</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-wordpress"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>WooCommerce</strong></h3>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-3 col-md-3">
-      <div class="fes4-box wow fadeIn" data-wow-delay="200ms">
-        <div class="fes13-title-cont">
-          <div class="fes13-box-icon">
-            <div class="icon fab fa-wordpress"></div>
-          </div>
-          <h3 class="font-montserrat"><strong>WordPress</strong></h3>
-        </div>
-      </div>
-    </div>
 
   </div>
 </div>
@@ -585,52 +213,22 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/1.png" />
-      </div>
+
+
+    <?php if( have_rows('clients','options') ): ?>
+    <?php while( have_rows('clients','options') ): the_row(); ?>
 
       <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/2.png" />
+        <img alt="client" src="<?php echo the_sub_field('image')?>" />
       </div>
+ <?php endwhile;endif; ?>
 
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/3.png" />
-      </div>
 
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/4.png" />
-      </div>
 
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/5.png" />
-      </div>
 
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/6.png" />
-      </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/7.png" />
-      </div>
 
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/8.png" />
-      </div>
-
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/9.png" />
-      </div>
-
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/10.png" />
-      </div>
-
-      <div class="col-xs-6 col-sm-2 client2-item">
-        <img alt="client" src="<?php echo SITE_URL; ?>/images/img/clients/11.png" />
-      </div>
-    </div>
 
   </div>
 </div>
@@ -673,125 +271,43 @@
     <ul class="port-grid clearfix" id="items-grid">
 
       <!-- Item 1 -->
+
+         <?php
+
+$args = array(
+    'post_type'=> 'portfolio',
+    'order'    => 'ASC'
+    );
+
+$the_query = new WP_Query( $args );
+if($the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post();
+        $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
+$term_list = wp_get_post_terms($post->ID, 'post_tag', array("fields" => "all"));
+
+
+?>
       <li class="port-item mix design">
-        <a href="shoppingpost.php">
+        <a href="<?php echo get_permalink();?>">
           <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/Shoppingpost.png" alt="img">
+            <img class="port-main-img" src="<?php echo $featured_img_url;?>" alt="img">
           </div>
           <div class="port-overlay-cont">
             <div class="port-title-cont2">
-              <h3>ShoppingPost</h3>
-              <span>ReactJs, React Native, MongoDb, AWS Lambda, RDS, CloudFront, Firebase, Restful API</span>
+              <h3><?php echo the_title(); ?></h3>
+              <span>
+                <?php foreach ($term_list as $term) {
+                  echo $term->name;
+                } ?>
+              </span>
             </div>
           </div>
         </a>
       </li>
 
-      <!-- Item 2 -->
-      <li class="port-item mix photography">
-        <a href="disney-london.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/Disney.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>Disney London</h3>
-              <span>AngularJs, Rest API, Agile Development</span>
-            </div>
-          </div>
-        </a>
-      </li>
 
-      <!-- Item 3 -->
-      <li class="port-item mix photography">
-        <a href="fifth-season.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/FifthSeason.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>Fifth Season</h3>
-              <span>WordPress, PHP, Rest API</span>
-            </div>
-          </div>
-        </a>
-      </li>
 
-      <!-- Item 4 -->
-      <li class="port-item mix design">
-        <a href="learnthings-africa.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/LearnThingsAfrica.png"
-              alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>LearnThings Africa (Samsung)</h3>
-              <span>Android, JAVA, ionic platform, Adobe Flash</span>
-            </div>
-          </div>
-        </a>
-      </li>
+<?php  endwhile;endif;wp_reset_query();?>
 
-      <!-- Item 5 -->
-      <li class="port-item mix photography">
-        <a href="semblence.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/Semblance.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>Semblance VR</h3>
-              <span>AngularJs, Bootstrap, PostGresQL, AWS, GraphQL</span>
-            </div>
-          </div>
-        </a>
-      </li>
-
-      <!-- Item 6 -->
-      <li class="port-item mix development">
-        <a href="socotec.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/Socotec.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>Socotec (ESG)</h3>
-              <span>AngularJs, ReactJs, Agile Development</span>
-            </div>
-          </div>
-        </a>
-      </li>
-
-      <!-- Item 7 -->
-      <li class="port-item mix development">
-        <a href="union-bank.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/UnionBank.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>Union Bank Of India</h3>
-              <span>POS development, Google Maps API, Payment Gateway</span>
-            </div>
-          </div>
-        </a>
-      </li>
-
-      <!-- Item 8 -->
-      <li class="port-item mix photography">
-        <a href="worldticket.php">
-          <div class="port-img-overlay">
-            <img class="port-main-img" src="<?php echo SITE_URL; ?>/images/img/products/Worldticket.png" alt="img">
-          </div>
-          <div class="port-overlay-cont">
-            <div class="port-title-cont2">
-              <h3>WorldTicket</h3>
-              <span>WordPress, PHP, Bootstrap</span>
-            </div>
-          </div>
-        </a>
-      </li>
 
     </ul>
 
@@ -809,14 +325,11 @@
       <div class="col-md-6  equal-height3">
         <div class="fes2-main-text-cont">
           <div class="fes2-title-45 font-montserrat">
-            Meet Our<br>
-            <strong>Team</strong>
+           <?php echo get_field('about_heading'); ?>
           </div>
           <div class="fes2-text-cont">
-            We are a crazy bunch who scribble on bean bags, munch samosas, play poker and leg cricket on weekends
-            and work hard for our clients. There is no special chair for the Boss and every designer here knows
-            programming. We like
-            being unconventional and innovative
+                 <?php echo get_field('about_content'); ?>
+
           </div>
         </div>
       </div>
@@ -824,7 +337,7 @@
       <div class="col-md-6 wow fadeInRight equal-height3 ads3-img-cont">
 
         <div class="row row-sm-fix absolute pos-rb-0">
-          <img src="<?php echo SITE_URL; ?>/images/img/team.jpg" alt="img">
+          <img src="<?php echo get_field('image'); ?>" alt="img">
         </div>
 
       </div>
@@ -845,7 +358,7 @@
           </div>
           <div class="cis-text">
             <h3 class="font-josefin"><strong>Address</strong></h3>
-            <p>ShoppingPost, 69, Ratanlok colony, Sch 53, Indore</p>
+            <p><?php echo get_field('address','options'); ?></p>
           </div>
         </div>
       </div>
@@ -856,8 +369,11 @@
           </div>
           <div class="cis-text">
             <h3 class="font-josefin"><strong>Email</strong></h3>
-            <p><a href="mailto:info@haswell.com">nitin@techacadium.com</a></p>
-            <p><a href="mailto:info@haswell.com">manas@techacadium.com</a></p>
+            <?php if( have_rows('email','options') ): ?>
+    <?php while( have_rows('email','options') ): the_row(); ?>
+          <p><a href="mailto:info@haswell.com"><?php echo the_sub_field('emails'); ?></a></p>
+    <?php endwhile;endif; ?>
+
           </div>
         </div>
       </div>
@@ -868,7 +384,11 @@
           </div>
           <div class="cis-text">
             <h3 class="font-josefin"><strong>Call Us</strong></h3>
-            <p>+91 9752456484 <br /> +91 9818083311</p>
+        <?php if( have_rows('call_us','options') ): ?>
+    <?php while( have_rows('call_us','options') ): the_row(); ?>
+            <p><?php  echo the_sub_field('call_uss'); ?></p>
+    <?php endwhile;endif; ?>
+
           </div>
         </div>
       </div>

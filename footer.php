@@ -114,7 +114,14 @@ jQuery(document).ready(function() {
 }); /*ready*/
      </script>
      <!-- JS end -->
-
+<?php if(!is_front_page()){?>
+<script>
+$('.main-menu-container a').each(function(){
+  var href=$(this).attr('href');
+  $(this).attr('href','http://localhost/codeBIn'+href);
+});
+</script>
+<?php } ?>
      </body>
 
      </html>

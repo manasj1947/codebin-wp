@@ -115,7 +115,7 @@
               <!-- LOGO -->
               <div class="logo-container-2">
                 <div class="logo-2">
-                  <a href="./#" class="clearfix">
+                  <a href="<?php echo get_home_url();?>" class="clearfix">
                     <img src="<?php echo SITE_URL; ?>/images/logo.png" class="logo-img" alt="ShoppingPost Logo">
                   </a>
                 </div>
@@ -141,50 +141,14 @@
 
                   <!-- MAIN MENU LIST -->
                   <nav class="collapse collapsing navbar-collapse right-1024">
-                    <ul class="nav navbar-nav">
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#services" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">Services</div>
-                        </a>
-                      </li>
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#technologies" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">Technologies</div>
-                        </a>
-                      </li>
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#clients" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">Clients</div>
-                        </a>
-                      </li>
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#portfolio" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">Portfolio</div>
-                        </a>
-                      </li>
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#about" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">About</div>
-                        </a>
-                      </li>
-
-                      <!-- MENU ITEM -->
-                      <li class="parent">
-                        <a href="./#contact" class="scroll-down smooth-scroll">
-                          <div class="main-menu-title">Contact</div>
-                        </a>
-                      </li>
-                    </ul>
+                   <?php
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'menu-1',
+                      'menu_class' => 'primary-menu nav navbar-nav',
+                    )
+                  );
+                ?>
                   </nav>
                 </div>
               </div>

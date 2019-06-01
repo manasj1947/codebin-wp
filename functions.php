@@ -119,6 +119,13 @@ function codebin_widgets_init() {
 }
 add_action( 'widgets_init', 'codebin_widgets_init' );
 
+
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}
+
+
+
 /**
  * Enqueue scripts and styles.
  */
@@ -161,3 +168,225 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+
+function cptui_register_my_cpts() {
+
+	/**
+	 * Post Type: Services.
+	 */
+
+	$labels = array(
+		"name" => __( "Services", "codebin" ),
+		"singular_name" => __( "Services", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Services", "codebin" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "services", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail" ),
+	);
+
+	register_post_type( "services", $args );
+
+	/**
+	 * Post Type: Portfolio.
+	 */
+
+	$labels = array(
+		"name" => __( "Portfolio", "codebin" ),
+		"singular_name" => __( "Portfolio", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Portfolio", "codebin" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "portfolio", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt" ),
+		"taxonomies" => array( "post_tag" ),
+	);
+
+	register_post_type( "portfolio", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts' );
+
+
+function cptui_register_my_cpts_services() {
+
+	/**
+	 * Post Type: Services.
+	 */
+
+	$labels = array(
+		"name" => __( "Services", "codebin" ),
+		"singular_name" => __( "Services", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Services", "codebin" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "services", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail" ),
+	);
+
+	register_post_type( "services", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_services' );
+
+
+function cptui_register_my_cpts_portfolio() {
+
+	/**
+	 * Post Type: Portfolio.
+	 */
+
+	$labels = array(
+		"name" => __( "Portfolio", "codebin" ),
+		"singular_name" => __( "Portfolio", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Portfolio", "codebin" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"delete_with_user" => false,
+		"show_in_rest" => true,
+		"rest_base" => "",
+		"rest_controller_class" => "WP_REST_Posts_Controller",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "portfolio", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt" ),
+		"taxonomies" => array( "post_tag" ),
+	);
+
+	register_post_type( "portfolio", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_portfolio' );
+
+
+function cptui_register_my_taxes() {
+
+	/**
+	 * Taxonomy: Services.
+	 */
+
+	$labels = array(
+		"name" => __( "Services", "codebin" ),
+		"singular_name" => __( "Services", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Services", "codebin" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'services', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"rest_base" => "services",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+		);
+	register_taxonomy( "services", array( "services" ), $args );
+}
+add_action( 'init', 'cptui_register_my_taxes' );
+
+
+function cptui_register_my_taxes_services() {
+
+	/**
+	 * Taxonomy: Services.
+	 */
+
+	$labels = array(
+		"name" => __( "Services", "codebin" ),
+		"singular_name" => __( "Services", "codebin" ),
+	);
+
+	$args = array(
+		"label" => __( "Services", "codebin" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'services', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"rest_base" => "services",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+		);
+	register_taxonomy( "services", array( "services" ), $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_services' );
